@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-using TheStore.ProductManagement.API.Model;
-using TheStore.ProductManagement.API.Models;
+﻿using TheStore.ProductManagement.API.Models;
 
 namespace TheStore.ProductManagement.API;
 

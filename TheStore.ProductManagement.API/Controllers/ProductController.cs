@@ -1,8 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Runtime.CompilerServices;
-using TheStore.ProductManagement.API.Model;
+using TheStore.ProductManagement.API.Authentication;
 using TheStore.ProductManagement.API.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,6 +8,7 @@ using TheStore.ProductManagement.API.Models;
 namespace TheStore.ProductManagement.API.Controllers
 {
     [Route("api/[controller]")]
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -71,24 +70,6 @@ namespace TheStore.ProductManagement.API.Controllers
             {
                 return BadRequest(new DbResults<string>(null, 400, "Product cannot be null"));
             }
-            //if (!ModelState.IsValid)
-            //{
-
-            //    // Collect validation errors
-            //    var errors = ModelState
-            //        .Where(e => e.Value.Errors.Count > 0)
-            //        .Select(e => new
-            //        {
-            //            Property = e.Key,
-            //            Messages = e.Value.Errors.Select(error => error.ErrorMessage)
-            //        });
-
-            //    // Return validation errors in your custom format
-            //    return BadRequest(new DbResults<string>(null, 400, "Validation errors occurred.")
-            //    {
-            //        Data = errors.ToString() // You can format this as needed
-            //    });
-            //}
 
              var dbResults = await _dbService.AddProductDataIntoDb(product);
 

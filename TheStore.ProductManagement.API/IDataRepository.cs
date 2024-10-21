@@ -15,6 +15,6 @@ namespace TheStore.ProductManagement.API
         Task<Product> GetProductData(string? ProductName, int? ProductId, OutputParamsForGet outParams);
 
         [Sql("usp_ProductDetailsAdd", Schema = "dbo")]
-        Task<Product> AddProductData(string? ProductJson, OutputParamsForPut outParams);
+        Task<Product> AddProductData(string? ProductJson,  OutputParamsForPut outParams);
     }
 }

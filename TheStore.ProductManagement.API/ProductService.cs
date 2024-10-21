@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Server.Kestrel.Transport.Quic;
-using Insight.Database;
+﻿using Insight.Database;
 using SqlInsightDbProvider = Insight.Database.Providers.MsSqlClient.SqlInsightDbProvider;
 using System.Data.SqlClient;
-using TheStore.ProductManagement.API.Model;
 using System.Text.Json;
-using static TheStore.ProductManagement.API.IDataRepository;
-using Insight.Database.MissingExtensions;
 using TheStore.ProductManagement.API.Models;
 namespace TheStore.ProductManagement.API
 {
