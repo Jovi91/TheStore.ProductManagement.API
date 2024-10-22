@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Server.Kestrel.Transport.Quic;
+using TheStore.ProductManagement.API.Models;
 
 namespace TheStore.ProductManagement.API.Authentication
 {
@@ -15,14 +16,24 @@ namespace TheStore.ProductManagement.API.Authentication
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             if (!context.HttpContext.Request.Headers.TryGetValue(AuthConstants.ApiKeyHeaderName, out var extractedApiKey)) {
-                context.Result = new UnauthorizedObjectResult("API Key missing");
+                var result = new Error
+                {
+                    StatusCode = StatusCodes.Status401Unauthorized,
+                    Message = new List<string?> { "API Key missing" }
+                };
+                context.Result = new UnauthorizedObjectResult(result);
                 return;
             }
 
             var apiKey = _configuration.GetValue<string>(AuthConstants.ApiKeySectionName);
             if (!apiKey.Equals(extractedApiKey))
             {
-                context.Result = new UnauthorizedObjectResult("Invalid API Key");
+                var result = new Error
+                {
+                    StatusCode = StatusCodes.Status401Unauthorized,
+                    Message = new List<string?> { "Invalid API Key" }
+                };
+                context.Result = new UnauthorizedObjectResult(result);
                 return;
             }
         }

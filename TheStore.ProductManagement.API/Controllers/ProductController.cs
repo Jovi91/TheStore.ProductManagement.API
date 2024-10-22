@@ -7,13 +7,14 @@ using TheStore.ProductManagement.API.Models;
 
 namespace TheStore.ProductManagement.API.Controllers
 {
+
     [Route("api/[controller]")]
     [ServiceFilter(typeof(ApiKeyAuthFilter))]
-    [ApiController]
+   // [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly IProductService _dbService;
-        public ProductController(IProductService dbService)
+        private readonly IDatabaseService _dbService;
+        public ProductController(IDatabaseService dbService)
         {
             _dbService = dbService;
         }
@@ -25,8 +26,11 @@ namespace TheStore.ProductManagement.API.Controllers
 
             var dbResults = await _dbService.GetProductDataFromDb(productName, null);
 
-            if (dbResults.Status == 404)
+            if (dbResults.Status == StatusCodes.Status404NotFound)
                 return NotFound(dbResults);
+
+            
+                
 
             return dbResults.Status != 200
                 ?BadRequest(dbResults) :
@@ -70,6 +74,7 @@ namespace TheStore.ProductManagement.API.Controllers
             {
                 return BadRequest(new DbResults<string>(null, 400, "Product cannot be null"));
             }
+
 
              var dbResults = await _dbService.AddProductDataIntoDb(product);
 

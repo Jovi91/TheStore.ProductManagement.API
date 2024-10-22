@@ -6,25 +6,16 @@ using TheStore.ProductManagement.API.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers()
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(typeof(ExceptionFilter));
+    options.Filters.Add(typeof(ValidateModelFilter));
+})
     .ConfigureApiBehaviorOptions(options =>
     {
-        options.InvalidModelStateResponseFactory = context =>
-        {
+        options.SuppressModelStateInvalidFilter = true;
+    }); 
 
-            var errorMessages = context.ModelState
-                .SelectMany(v => v.Value.Errors.Select(e => e.ErrorMessage))
-                .ToList();
-
-            var response = new
-            {
-                status = StatusCodes.Status400BadRequest,
-                messages = errorMessages
-            };
-
-            return new BadRequestObjectResult(response);
-        };
-    });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -54,11 +45,9 @@ builder.Services.AddSwaggerGen(c =>
     c.AddSecurityRequirement(requirment);
 });
 
+builder.Services.AddScoped<ValidateModelFilter>();
 builder.Services.AddScoped<ApiKeyAuthFilter>();
-builder.Services.AddScoped<IProductService, ProductService>();
-
-
-
+builder.Services.AddScoped<IDatabaseService, DatabaseService>();
 
 var app = builder.Build();
 
