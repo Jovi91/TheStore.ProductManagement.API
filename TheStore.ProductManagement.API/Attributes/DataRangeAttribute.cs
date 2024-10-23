@@ -8,18 +8,19 @@ public class DateRangeAttribute : ValidationAttribute
     {
         if (validationContext.ObjectInstance is Price price)
         {
-
-            if (price.StartDate >= price.EndDate)
+            if (DateTime.TryParse(price.StartDate, out DateTime startDate) &&
+                DateTime.TryParse(price.EndDate, out DateTime endDate))
             {
-                return new ValidationResult("StartDate must be earlier than EndDate.");
+                if (startDate >= endDate)
+                {
+                    return new ValidationResult("The StartDate must be earlier than the EndDate.");
+                }
+            }
+            else
+            {
+                return new ValidationResult("Invalid date format. Date must be in the format yyyy-MM-dd");
             }
         }
-        else
-        {
-
-            return ValidationResult.Success;
-        }
-
         return ValidationResult.Success;
     }
 }

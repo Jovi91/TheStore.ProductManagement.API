@@ -1,4 +1,5 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using TheStore.ProductManagement.API.Attributes;
 
@@ -6,19 +7,23 @@ namespace TheStore.ProductManagement.API.Models;
 
 public class Price
 {
-    [JsonRequired]
+    
     [JsonPropertyName("Currency")]
+    [Required]
     public string Currency { get; set; }
-    [JsonRequired]
+
     [JsonPropertyName("Price")]
+    [Required]
     public decimal PriceValue { get; set; }
 
-    [JsonRequired]
     [JsonPropertyName("StartDate")]
-    public DateTime StartDate  { get; set; }
+    [Required]
+    [DataType(DataType.Date)]
+    public string StartDate  { get; set; }
 
-    [JsonRequired]
-    [DateRange]
     [JsonPropertyName("EndDate")]
-    public DateTime EndDate { get; set; }
+    [DateRange]
+    [Required]
+    [DataType(DataType.Date)]
+    public string EndDate { get; set; }
 }

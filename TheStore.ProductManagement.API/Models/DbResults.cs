@@ -1,4 +1,4 @@
-﻿namespace TheStore.ProductManagement.API.Model;
+﻿namespace TheStore.ProductManagement.API.Models;
 
 public class DbResults<T>
 {
