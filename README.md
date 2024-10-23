@@ -1,4 +1,5 @@
 --- THE STORE ---
+
 API for retrieving and adding products to the store
 
 STEPS:
