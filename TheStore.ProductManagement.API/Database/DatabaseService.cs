@@ -3,9 +3,9 @@ using SqlInsightDbProvider = Insight.Database.Providers.MsSqlClient.SqlInsightDb
 using System.Data.SqlClient;
 using System.Text.Json;
 using TheStore.ProductManagement.API.Models;
-namespace TheStore.ProductManagement.API
+namespace TheStore.ProductManagement.API.Database
 {
-    public sealed class DatabaseService: IDatabaseService
+    public sealed class DatabaseService : IDatabaseService
     {
         private readonly SqlConnection _db;
         public DatabaseService(IConfiguration configuration)
@@ -23,10 +23,10 @@ namespace TheStore.ProductManagement.API
 
             await i.GetProductData(productName, id, outputParams); //is insighdb methods async?
 
-            if(outputParams.StatusId == 200)
+            if (outputParams.StatusId == 200)
                 product = JsonSerializer.Deserialize<Product[]>(outputParams.ProductDetails);
 
-            return new (product, outputParams.StatusId, outputParams.Message);
+            return new(product, outputParams.StatusId, outputParams.Message);
         }
 
 
@@ -42,17 +42,17 @@ namespace TheStore.ProductManagement.API
             return new($"ProductId: {outputParams.ProductId}", outputParams.StatusId, outputParams.Message);
         }
 
-        public  async Task ApiErrorSaveToDb(ApiErrorLog errorLog)
+        public async Task ApiErrorSaveToDb(ApiErrorLog errorLog)
         {
             var i = _db.As<IDataRepository>();
-          //  var outputParams = new IDataRepository.OutputParamsForPut(0, string.Empty, 0);
+            //  var outputParams = new IDataRepository.OutputParamsForPut(0, string.Empty, 0);
 
             var errorLogJson = JsonSerializer.Serialize(errorLog);
 
             await i.ApiErrorsLog(errorLogJson); //is insighdb methods async?
 
         }
-            
+
 
     }
 }

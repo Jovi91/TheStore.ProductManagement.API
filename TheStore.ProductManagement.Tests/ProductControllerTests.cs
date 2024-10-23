@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheStore.ProductManagement.API.Controllers;
-using TheStore.ProductManagement.API;
 using Microsoft.AspNetCore.Mvc;
 using TheStore.ProductManagement.API.Models;
 using Microsoft.AspNetCore.Http;
@@ -14,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using AutoMapper;
 using FluentAssertions;
+using TheStore.ProductManagement.API.Database;
 
 namespace TheStore.ProductManagement.Tests;
 
@@ -255,10 +255,6 @@ public class ProductControllerTests
 
         _mockDbService.Setup(x => x.AddProductDataIntoDb(It.IsAny<Product>()))
             .ReturnsAsync(dbResults);  
-
-        // Mock the mapping if necessary (assumed that you want to map to some Error model)
-        // _mockMapper.Setup(m => m.Map<DbResults<string>>(It.IsAny<DbResults<string>>()))
-        //     .Returns(dbResults); // Commented out as this might not be needed unless used in action.
 
         // Act
         var result = await _controller.Post(product);

@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using TheStore.ProductManagement.API.Models;
 
-namespace TheStore.ProductManagement.API;
+namespace TheStore.ProductManagement.API.Filters;
 
-public class ValidateModelFilter: ActionFilterAttribute
+public class ValidateModelFilter : ActionFilterAttribute
 {
     public override void OnActionExecuting(ActionExecutingContext context)
     {
@@ -26,9 +26,6 @@ public class ValidateModelFilter: ActionFilterAttribute
 
     }
 
-
-
-    
 
 }
 

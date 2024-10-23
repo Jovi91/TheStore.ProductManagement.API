@@ -1,10 +1,11 @@
-﻿using TheStore.ProductManagement.API;
-using Insight.Database;
+﻿using Insight.Database;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using TheStore.ProductManagement.API.Authentication;
 using AutoMapper;
 using TheStore.ProductManagement.API.Helpers;
+using TheStore.ProductManagement.API.Database;
+using TheStore.ProductManagement.API.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +46,14 @@ builder.Services.AddSwaggerGen(c =>
         { scheme, new List<string>() }
     };
     c.AddSecurityRequirement(requirment);
+    c.SwaggerDoc("v1",
+        new OpenApiInfo
+        {
+            Version = "1.0",
+            Title = "THE STORE API",
+            Description = "THE STORE API for adding and retriving product data"
+        });
+    c.EnableAnnotations();
 });
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

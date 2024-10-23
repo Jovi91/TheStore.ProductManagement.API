@@ -1,6 +1,6 @@
 ﻿using TheStore.ProductManagement.API.Models;
 
-namespace TheStore.ProductManagement.API;
+namespace TheStore.ProductManagement.API.Database;
 
 public interface IDatabaseService
 {

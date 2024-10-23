@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using TheStore.ProductManagement.API;
 using TheStore.ProductManagement.API.Models;
+using TheStore.ProductManagement.API.Filters;
 
 namespace TheStore.ProductManagement.Tests;
 
