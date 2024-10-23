@@ -14,6 +14,9 @@ namespace TheStore.ProductManagement.API.Database
         [Sql("ProductDetailsGet", Schema = "api")]
         Task<Product> GetProductData(string? ProductName, int? ProductId, OutputParamsForGet outParams);
 
+        [Sql("ProductDetailsGetAll", Schema = "api")]
+        Task<Product> GetAllProductData(int? StartRow, int? PageSize, OutputParamsForGet outParams);
+
         [Sql("ProductDetailsAdd", Schema = "api")]
         Task<Product> AddProductData(string? ProductJson, OutputParamsForPut outParams);
 

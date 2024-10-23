@@ -212,9 +212,9 @@ public class ProductControllerTests
 
         var dbResults = new DbResults<Product[]>(sampleProducts, StatusCodes.Status200OK, "Ok");
 
-    
-        _mockDbService.Setup(x => x.GetProductDataFromDb(null, null))
-            .ReturnsAsync(dbResults);
+
+        _mockDbService.Setup(x => x.GetAllProductDataFromDb(It.IsAny<int>(), It.IsAny<int>()))
+                 .ReturnsAsync(dbResults);
 
         _mockMapper.Setup(m => m.Map<Product[]>(It.IsAny<Product[]>()))
             .Returns(sampleProducts);

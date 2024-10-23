@@ -29,6 +29,21 @@ namespace TheStore.ProductManagement.API.Database
             return new(product, outputParams.StatusId, outputParams.Message);
         }
 
+        public async Task<DbResults<Product[]?>> GetAllProductDataFromDb(int? pageNumber, int? pageSize)
+        {
+            Product[]? product = null;
+            var i = _db.As<IDataRepository>();
+            var outputParams = new IDataRepository.OutputParamsForGet(0, string.Empty, string.Empty);
+
+            var startRow = (pageNumber - 1) * pageSize;
+            await i.GetAllProductData(startRow, pageSize, outputParams); //is insighdb methods async?
+
+            if (outputParams.StatusId == 200)
+                product = JsonSerializer.Deserialize<Product[]>(outputParams.ProductDetails);
+
+            return new(product, outputParams.StatusId, outputParams.Message);
+        }
+
 
         public async Task<DbResults<string>> AddProductDataIntoDb(Product product)
         {

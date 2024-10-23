@@ -2,6 +2,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using TheStore.ProductManagement.API.Authentication;
 using TheStore.ProductManagement.API.Database;
@@ -69,9 +70,9 @@ namespace TheStore.ProductManagement.API.Controllers
         [ProducesResponseType(400, Type = typeof(Error))]
         [ProducesResponseType(404, Type = typeof(Error))]
         [SwaggerOperation(Summary = "Retrieves all products", Description = "This endpoint allows retriving all existing products from the store.")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([Range(1, int.MaxValue)] int pageNumber = 1, [Range(1, 100)] int pageSize = 10)
         {
-            var dbResults = await _dbService.GetProductDataFromDb(null, null);
+            var dbResults = await _dbService.GetAllProductDataFromDb((int)pageNumber, pageSize);
 
             if (dbResults.Status == StatusCodes.Status404NotFound)
                 return NotFound(_mapper.Map<Error>(dbResults));
