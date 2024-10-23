@@ -11,7 +11,7 @@ public class DateRangeAttribute : ValidationAttribute
 
             if (price.StartDate >= price.EndDate)
             {
-                return new ValidationResult("StartDate must be earlier than EndDate.");
+                return new ValidationResult("The StartDate must be earlier than the EndDate.");
             }
         }
         else

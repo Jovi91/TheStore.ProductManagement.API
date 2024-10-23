@@ -1,19 +1,11 @@
-﻿using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TheStore.ProductManagement.API.Controllers;
-using Microsoft.AspNetCore.Mvc;
-using TheStore.ProductManagement.API.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using AutoMapper;
+﻿using AutoMapper;
 using FluentAssertions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+using TheStore.ProductManagement.API.Controllers;
 using TheStore.ProductManagement.API.Database;
+using TheStore.ProductManagement.API.Models;
 
 namespace TheStore.ProductManagement.Tests;
 

@@ -1,9 +1,5 @@
-﻿using Insight.Database;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
 using TheStore.ProductManagement.API.Authentication;
-using AutoMapper;
-using TheStore.ProductManagement.API.Helpers;
 using TheStore.ProductManagement.API.Database;
 using TheStore.ProductManagement.API.Filters;
 

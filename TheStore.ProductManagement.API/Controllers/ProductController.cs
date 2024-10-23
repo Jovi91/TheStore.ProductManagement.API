@@ -3,7 +3,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.ComponentModel.DataAnnotations;
-using System.Data;
 using TheStore.ProductManagement.API.Authentication;
 using TheStore.ProductManagement.API.Database;
 using TheStore.ProductManagement.API.Models;
