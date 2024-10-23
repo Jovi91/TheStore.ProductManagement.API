@@ -9,8 +9,6 @@ public class ValidateModelFilter: ActionFilterAttribute
     public override void OnActionExecuting(ActionExecutingContext context)
     {
 
-        context.HttpContext.Request.EnableBuffering();
-
         if (!context.ModelState.IsValid)
         {
             var errorMessages = context.ModelState
@@ -27,6 +25,10 @@ public class ValidateModelFilter: ActionFilterAttribute
         }
 
     }
+
+
+
+    
 
 }
 

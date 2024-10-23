@@ -11,13 +11,13 @@ namespace TheStore.ProductManagement.API
 
         public record OutputParamsForPut(int StatusId, string Message, int ProductId);
     
-        [Sql("usp_ProductDetailsGet", Schema = "dbo")]
+        [Sql("ProductDetailsGet", Schema = "api")]
         Task<Product> GetProductData(string? ProductName, int? ProductId, OutputParamsForGet outParams);
 
-        [Sql("usp_ProductDetailsAdd", Schema = "dbo")]
+        [Sql("ProductDetailsAdd", Schema = "api")]
         Task<Product> AddProductData(string? ProductJson,  OutputParamsForPut outParams);
 
-        [Sql("usp_ProductApiErrorLog", Schema = "dbo")]
+        [Sql("ProductApiErrorLog", Schema = "api")]
         Task ApiErrorsLog(string? ApiErrorJson);
     }
 }

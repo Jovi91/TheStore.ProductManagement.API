@@ -19,11 +19,8 @@ namespace TheStore.ProductManagement.API
             int statusCode = StatusCodes.Status500InternalServerError;
             string errorMessages = context.Exception?.Message ?? "An unexpected error occurred";
 
-            var error = new Error
-            {
-                StatusCode = statusCode,
-                Message = new List<string?> { errorMessages }
-            };
+            var error = new Error(statusCode, new List<string?> { errorMessages });
+     
 
 
             var errorLog = new ApiErrorLog

@@ -3,6 +3,8 @@ using Insight.Database;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using TheStore.ProductManagement.API.Authentication;
+using AutoMapper;
+using TheStore.ProductManagement.API.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,9 +47,11 @@ builder.Services.AddSwaggerGen(c =>
     c.AddSecurityRequirement(requirment);
 });
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ValidateModelFilter>();
 builder.Services.AddScoped<ApiKeyAuthFilter>();
 builder.Services.AddScoped<IDatabaseService, DatabaseService>();
+
 
 var app = builder.Build();
 

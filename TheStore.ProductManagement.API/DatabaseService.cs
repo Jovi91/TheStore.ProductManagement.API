@@ -15,9 +15,9 @@ namespace TheStore.ProductManagement.API
 
         }
 
-        public async Task<DbResults<Product[]>> GetProductDataFromDb(string? productName, int? id)
+        public async Task<DbResults<Product[]?>> GetProductDataFromDb(string? productName, int? id)
         {
-            Product[] product = null;
+            Product[]? product = null;
             var i = _db.As<IDataRepository>();
             var outputParams = new IDataRepository.OutputParamsForGet(0, string.Empty, string.Empty);
 
