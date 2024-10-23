@@ -18,10 +18,12 @@ public class Price
 
     [JsonPropertyName("StartDate")]
     [Required]
-    public DateTime StartDate  { get; set; }
+    [DataType(DataType.Date)]
+    public string StartDate  { get; set; }
 
     [JsonPropertyName("EndDate")]
     [DateRange]
     [Required]
-    public DateTime EndDate { get; set; }
+    [DataType(DataType.Date)]
+    public string EndDate { get; set; }
 }

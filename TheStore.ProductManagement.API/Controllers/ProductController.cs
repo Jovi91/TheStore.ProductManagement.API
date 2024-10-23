@@ -3,6 +3,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using TheStore.ProductManagement.API.Authentication;
 using TheStore.ProductManagement.API.Database;
 using TheStore.ProductManagement.API.Models;
@@ -15,6 +16,7 @@ namespace TheStore.ProductManagement.API.Controllers
     [Route("api/[controller]")]
     [ServiceFilter(typeof(ApiKeyAuthFilter))]
     [ProducesResponseType(500, Type = typeof(Error))]
+    [ProducesResponseType(401, Type = typeof(Error))]
     public class ProductController : ControllerBase
     {
         private readonly IDatabaseService _dbService;
@@ -61,7 +63,6 @@ namespace TheStore.ProductManagement.API.Controllers
             return dbResults.Status != StatusCodes.Status200OK
                 ? BadRequest(_mapper.Map<Error>(dbResults)) :
                 Ok(dbResults.Data.FirstOrDefault());
-
         }
 
         [HttpGet]
@@ -79,7 +80,6 @@ namespace TheStore.ProductManagement.API.Controllers
             return dbResults.Status != StatusCodes.Status200OK
                 ? BadRequest(_mapper.Map<Error>(dbResults)) :
                 Ok(dbResults.Data);
-
         }
 
 

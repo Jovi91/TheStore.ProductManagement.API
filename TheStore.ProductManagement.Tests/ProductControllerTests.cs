@@ -63,8 +63,8 @@ public class ProductControllerTests
                 {
                     Currency = "PLN",
                     PriceValue = 10000,
-                    StartDate = DateTime.Now.AddDays(-1),
-                    EndDate = DateTime.Now.AddDays(10)
+                    StartDate = "2024-11-10",
+                    EndDate =  "2024-12-10"
                 }
             }
         };
@@ -133,8 +133,8 @@ public class ProductControllerTests
                 {
                     Currency = "PLN",
                     PriceValue = 10000,
-                    StartDate = DateTime.Now.AddDays(-1),
-                    EndDate = DateTime.Now.AddDays(10)
+                    StartDate = "2024-11-10",
+                    EndDate =  "2024-12-10"
                 }
             }
         };
@@ -179,8 +179,8 @@ public class ProductControllerTests
                 {
                     Currency = "USD",
                     PriceValue = 50,
-                    StartDate = DateTime.Now.AddDays(-10),
-                    EndDate = DateTime.Now.AddDays(5)
+                    StartDate = "2024-11-10",
+                    EndDate =  "2024-12-10"
                 }
             }
         },
@@ -195,8 +195,8 @@ public class ProductControllerTests
                 {
                     Currency = "EUR",
                     PriceValue = 40,
-                    StartDate = DateTime.Now.AddDays(-15),
-                    EndDate = DateTime.Now.AddDays(3)
+                    StartDate = "2024-11-10",
+                    EndDate =  "2024-12-10"
                 }
             }
         }
@@ -236,8 +236,8 @@ public class ProductControllerTests
             {
                 Currency = "PLN",
                 PriceValue = 10000,
-                StartDate = DateTime.Now.AddDays(-1),
-                EndDate = DateTime.Now.AddDays(10)
+                    StartDate = "2024-11-10",
+                    EndDate =  "2024-12-10"
             }
         }
         };
@@ -290,8 +290,8 @@ public class ProductControllerTests
                 {
                     Currency = "PLN",
                     PriceValue = 10000,
-                    StartDate = DateTime.Now.AddDays(-1),
-                    EndDate = DateTime.Now.AddDays(10)
+                    StartDate = "2024-11-10",
+                    EndDate =  "2024-12-10"
                 }
             }
         };
